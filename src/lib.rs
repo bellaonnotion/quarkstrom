@@ -10,11 +10,14 @@ use bytemuck::{Pod, Zeroable};
 
 use crate::gui::GuiHandler;
 use ultraviolet::Vec2;
+#[cfg(target_os = "windows")]
+use winit::platform::windows::EventLoopBuilderExtWindows;
+#[cfg(target_os = "linux")]
+use winit::platform::x11::EventLoopBuilderExtX11;
 use winit::{
     dpi::{PhysicalPosition, PhysicalSize},
     event::*,
     event_loop::{ControlFlow, EventLoopBuilder},
-    platform::windows::EventLoopBuilderExtWindows,
     window::{Window, WindowBuilder},
 };
 
